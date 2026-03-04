@@ -1,10 +1,4 @@
-= Showroom Template
-
-A template for creating Red Hat Showroom lab guides and demo content, built with https://antora.org[Antora].
-
-* 0% cruft
-* Red Hat Demo Platform UI Bundle default
-* Dev Mode extension that displays the asciidoc attributes you have to work with
+= LB2211 - Accelerating AI Workloads with Red Hat AI and IBM Fusion: A Hands-On Lab
 
 == Documentation
 
