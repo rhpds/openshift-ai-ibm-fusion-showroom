@@ -14,9 +14,10 @@ tabs:
 - name: OpenShift Console
   url: 'https://console-openshift-console.${DOMAIN}'
 - name: OpenShift AI
-  url: 'https://console-openshift-console.${DOMAIN}'
-- name: IBM Fusion
-  url: 'https://console-ibm-spectrum-fusion-ns.${DOMAIN}'
+  url: 'https://data-science-gateway.${DOMAIN}'
 - name: Terminal
   path: /terminal
   port: 443
+# Does not work for multi-user
+# - name: IBM Fusion
+#   url: 'https://console-ibm-spectrum-fusion-ns.${DOMAIN}'
