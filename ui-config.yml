@@ -16,5 +16,5 @@ tabs:
 - name: IBM Fusion
   url: 'https://console-ibm-spectrum-fusion-ns.${DOMAIN}'
 - name: Terminal
-  path: /wetty
+  path: /terminal
   port: 443
