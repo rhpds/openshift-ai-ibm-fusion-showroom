@@ -13,6 +13,8 @@ view_switcher:
 tabs:
 - name: OpenShift Console
   url: 'https://console-openshift-console.${DOMAIN}'
+- name: OpenShift AI
+  url: 'https://console-openshift-console.${DOMAIN}'
 - name: IBM Fusion
   url: 'https://console-ibm-spectrum-fusion-ns.${DOMAIN}'
 - name: Terminal
