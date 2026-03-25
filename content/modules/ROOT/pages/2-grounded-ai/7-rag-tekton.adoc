@@ -1,0 +1,91 @@
+= Automate the Flow with Tekton
+
+. Let's automate this whole flow when there is a new document uplaoded to MinIO! For that we need to deploy a Tekton pipeline to handle triggering the KFP (Kubeflow Pipelines) as well as some surrounding ops tasks (very similar to what we did in Ready to Scale 201).
+In the end, the whole flow will look like this:
++
+image::2-grounded-ai/doc-ingestion-tekton-flow.png[doc-ingestion-tekton-flow]
+
+Let's deploy the Tekton pipeline by creating a folder under `genaiops-gitops/toolings` as below:
+
+[source,bash]
+----
+mkdir -p /opt/app-root/src/genaiops-gitops/toolings/doc-ingestion-pipeline
+touch /opt/app-root/src/genaiops-gitops/toolings/doc-ingestion-pipeline/config.yaml
+----
+
+. Update the `config.yaml` file:
++
+[source,yaml]
+----
+chart_path: charts/canopy-doc-ingestion-pipeline
+username: <USER_NAME>
+cluster_domain: <CLUSTER_DOMAIN>
+----
+
+. Commit and push changes as always.
++
+[source,bash]
+----
+cd /opt/app-root/src/genaiops-gitops
+git pull
+git add .
+git commit -m "🦁 RAG doc ingestion pipeline added 🦁"
+git push
+----
+
+. This pipeline will give you a webhook to add to MinIO so that when we upload a file, MinIO can trigger the Tekton pipeline.
+Go to MinIO (link:https://minio-ui-<USER_NAME>-toolings.<CLUSTER_DOMAIN>[https://minio-ui-<USER_NAME>-toolings.<CLUSTER_DOMAIN>]) > `Events` and click on `Add Event Destination` on the right top. Select `Webhook`:
++
+image::2-grounded-ai/minio-webhook-1.png[minio-webhook-1]
+
+. Fill out the form with these two information:
++
+*Identifier:* `doc-ingestion-webhook`
++
+*Endpoint:* `http://el-canopy-doc-ingestion-event-listener.<USER_NAME>-toolings.svc.cluster.local:8080`
++
+..and hit `Save Event Destination`.
++
+image::2-grounded-ai/minio-webhook-2.png[minio-webhook-2]
+
+. Strangely on top, MinIO will ask you to restart it to make the configuration takes effec. Click `Restart` and just refresh the page 🤷
++
+image::2-grounded-ai/minio-webhook-3.png[minio-webhook-3]
+
+. Now, let's associate this webhook with `documents` bucket. Go to Buckets > `documents` > Events and click `Subscribe to Event`. Select your newly created webhook from the dropdown menu of ARN, and check `PUT - Object Uploaded` as the event. `Save` your changes. You don't have to restart it again :)
++
+image::2-grounded-ai/minio-webhook-4.png[minio-webhook-4]
+
+. Now, you can download yet another syllabus that your choice from link:https://rdu-website-ai501.<CLUSTER_DOMAIN>[RDU website] and upload it to `documents` bucket. You need to go to `Object Browser` > `documents` for it.
++
+image::2-grounded-ai/minio-upload-pdf.gif[minio-upload-pdf]
+
+. After you upload the PDF, go to `OpenShift console` > `Pipelines` and observe that a pipeline is triggered.
++
+image::2-grounded-ai/rag-tekton-pipeline.png[rag-tekton-pipeline]
+
+. And if you go back to the OpenShift AI console, you'll see that `doc-ingestion` Kubeflow Pipeline is running:
++
+image::2-grounded-ai/rag-kfp-pipelinerun.png[rag-kfp-pipelinerun]
+
+. After the pipeline finish, you'll see a automated push happened in `backend` repository.
++
+image::2-grounded-ai/gitea-auto-commit.png[gitea-auto-commit]
++
+And what happens when we see an update in `backend`?
+You guessed it, we trigger the evals pipeline!
++
+image::2-grounded-ai/trigger-evals.png[trigger-evals]
++
+After the eval pipeline finishes, you can find a PR in `backend` repository to update vector DB ID in production.
++
+In the description, you'll see a link to evaluation results. You need to check the results and decide whether to accept this change or go back and do some more test, more data ingestions etc.
++
+You are the human in the loop here :)
++
+image::2-grounded-ai/canopy-be-rag-pr.png[canopy-be-rag-pr]
++
+And your evals doesn't cover anything related to the last PDF you uploaded?
+Feel free to update your evals, add more prompt & expected result pairs (Prompt Engineering Yay!).
++
+image::2-grounded-ai/prompt-tracker-eval-results.png[prompt-tracker-eval-results]

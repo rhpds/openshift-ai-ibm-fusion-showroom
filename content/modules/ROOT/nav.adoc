@@ -1,18 +1,13 @@
-* xref:index.adoc[What is Showroom?]
+* xref:index.adoc[Welcome]
 
-.Content Developer Guide
-* xref:quick-start.adoc[Quick Start]
-* xref:content-repo.adoc[Creating a Content Repository]
-* xref:agnosticv-config.adoc[AgnosticV Configuration]
-* xref:ui-config.adoc[UI Configuration]
-* xref:user-data.adoc[User Data and Variables]
-* xref:ocp4-role-reference.adoc[OCP4 Role Reference]
-* xref:vm-role-reference.adoc[VM Role Reference]
+.IBM Fusion
+* xref:1-fusion/intro-fusion.adoc[What is IBM Fusion?]
 
-.Showroom Developer Guide
-* xref:architecture.adoc[Architecture]
-* xref:deployer.adoc[Showroom Deployer]
-* xref:images.adoc[Showroom Images]
-* xref:nookbag.adoc[Nookbag UI]
-* xref:ocp-integration.adoc[OCP Integration]
-* xref:contributing.adoc[Contributing]
+.Grounded AI
+* xref:2-grounded-ai/README.adoc[Intro]
+* xref:2-grounded-ai/1-rag.adoc[RAG]
+* xref:2-grounded-ai/2-docling.adoc[Docling]
+* xref:2-grounded-ai/3-vector-stores.adoc[Vector Stores]
+* xref:2-grounded-ai/4-rag-pipelines.adoc[RAG Pipelines]
+* xref:2-grounded-ai/5-rag-canopyUI.adoc[Canopy with RAG]
+* xref:2-grounded-ai/6-eval-rag.adoc[Rag Evals]
