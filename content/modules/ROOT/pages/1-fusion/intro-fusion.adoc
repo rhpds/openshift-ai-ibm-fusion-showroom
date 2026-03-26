@@ -1,1 +1,96 @@
 = IBM Fusion
+
+== Overview
+
+IBM Fusion is an integrated, AI-enabled platform designed to unify enterprise data, content, and automation capabilities under a single architectural framework. It provides a modern foundation for building intelligent applications that leverage structured data, unstructured content, and advanced analytics. Fusion simplifies how organizations manage information by combining storage, governance, cataloging, and content-aware services into a cohesive ecosystem.
+
+Fusion is built to support hybrid cloud environments, enabling consistent data and content operations across on-premises systems, private clouds, and public cloud providers. Its modular architecture allows organizations to adopt components incrementally while maintaining interoperability and governance across the entire platform.
+
+The diagram below represents the logical architecture of IBM Fusion and the different data services it provides.
+
+image::1-fusion/ibm-fusion-logical-architecture.png[IBM Fusion Logical Architecture, width=700, align=center]
+
+== Key Architectural Principles
+
+* **Unified Data and Content Layer** – Fusion integrates structured data, documents, and rich media into a single logical platform.
+* **AI-Driven Automation** – Metadata extraction, classification, and policy enforcement are powered by AI models.
+* **Scalability and Resilience** – Designed for enterprise workloads with built-in redundancy, backup, and recovery.
+* **Governance by Design** – Metadata, lineage, and access policies are consistently applied across all components.
+* **Extensibility** – APIs and modular services allow integration with existing applications and external systems.
+
+=== Physical Architecture
+
+The diagram below represents the physical architecture of IBM Fusion together with the different data services it provides and the way the applications can leverage said services.
+
+image::1-fusion/ibm-fusion-physical-architecture.png[IBM Fusion Physical Architecture, width=700, align=center]
+
+== IBM Fusion Components
+
+=== Data Foundation
+The Data Foundation is the core services layer that unifies how data and content are stored, accessed, and governed. It provides:
+
+* A consistent API layer for structured and unstructured data
+* Metadata services for classification, lineage, and policy enforcement
+* Secure access controls and identity integration
+* High-performance storage abstractions for scalable workloads
+
+This layer ensures that all Fusion components operate on trusted, governed, and high-quality data.
+
+=== Backup and Restore
+The Backup and Restore component provides enterprise-grade protection for all Fusion-managed assets. It includes:
+
+* Automated, scheduled backups of content, metadata, and configurations
+* Point-in-time recovery for rapid restoration after failures
+* Policy-driven retention and lifecycle management
+* Support for hybrid cloud backup targets
+
+This ensures business continuity and minimizes risk from data loss, corruption, or operational disruptions.
+
+=== Cataloging
+Cataloging provides a centralized inventory of all data and content assets within the Fusion environment. It enables:
+
+* Automated metadata extraction and enrichment
+* Searchable catalogs for data discovery and reuse
+* Lineage tracking to understand data origins and transformations
+* Integration with governance and compliance frameworks
+
+Cataloging helps teams quickly find the information they need while maintaining visibility into how data is used across the organization.
+
+=== Content Aware Storage
+Content Aware Storage optimizes how content is stored, managed, and retrieved by applying intelligence to storage decisions. Capabilities include:
+
+* Automatic tiering based on content type, usage patterns, or retention rules
+* AI-driven analysis to determine optimal storage placement
+* Cost optimization through intelligent lifecycle management
+* Enforcement of compliance and retention policies at the storage layer
+
+This ensures that content is stored efficiently, securely, and in alignment with organizational and regulatory requirements.
+
+== How the Components Work Together
+
+IBM Fusion’s components are designed to operate as an integrated platform:
+
+* **Data Foundation** provides the underlying services that unify data and content.
+* **Cataloging** builds on the Data Foundation to make assets discoverable and governed.
+* **Content Aware Storage** uses metadata and policies from the Data Foundation and Cataloging to optimize storage.
+* **Backup and Restore** protects the entire ecosystem, ensuring resilience and recoverability.
+
+Together, these components create a cohesive environment for building modern, content-rich applications that leverage AI, automation, and enterprise-grade governance.
+
+=== Component Architecture
+
+The diagram below represents the various components of IBM Fusion together with the different elements that compose them.
+
+image::1-fusion/ibm-fusion-component-architecture.png[IBM Fusion Component Architecture, width=700, align=center]
+
+== Typical Use Cases
+
+* Enterprise content management modernization
+* Intelligent document processing and automation
+* Regulatory compliance and audit readiness
+* Hybrid cloud data unification
+* Application modernization and digital transformation initiatives
+
+== Summary
+
+IBM Fusion provides a unified, intelligent platform for managing enterprise
